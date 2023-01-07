@@ -14,3 +14,9 @@ package-install:
 
 brain-games:
 	poetry run brain_games
+
+all-steps:
+	poetry install
+	poetry build
+	poetry publish --dry-run
+	python3 -m pip install dist/*.whl --force-reinstall
