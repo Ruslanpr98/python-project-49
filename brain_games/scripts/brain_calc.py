@@ -1,10 +1,12 @@
 import random
 from brain_games.scripts.brain_games import main
 
+from brain_games.scripts.brain_components import start_string, check_answers
+
 
 name = main()
 
-print("What is the result of the expression?")
+start_string("What is the result of the expression?")
 
 
 operation = random.choice(['+', '-', '*'])
@@ -20,10 +22,7 @@ while (count < 3):
     elif (operation == '*'):
         right_answer = num1 * num2
     answer = input("Your answer: ")
-    if (int(right_answer) != int(answer)):
-        print(f"{answer} is wrong answer ;(. Correct answer was {right_answer}.\n Let's try again {name}!\n")
+    if check_answers(answer, right_answer, name) == False:
         break
-    else:
-        print("Correct!")
     count += 1
 print(f"Congratulations, {name}!\n")
